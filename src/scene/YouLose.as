@@ -16,7 +16,7 @@ package scene
 			addChild( myImage );
 			
 			myImage.x = (1280-myImage.width)/2;
-			myImage.y = (720-myImage.height)/2;
+			myImage.y = (520-myImage.height)/2;
 		}
 	}
 }
