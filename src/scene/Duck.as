@@ -29,9 +29,13 @@ package scene
 			duckContainer.addChild( duckImage );				
 			
 			duckContainer.x = 1580;
-			duckContainer.y = (520/2);		
+			duckContainer.y = randomBetween(20, 570);
 						
 			addEventListener(Event.ADDED_TO_STAGE, fly);
+		}
+		
+		private function randomBetween(minNum:int, maxNum:int):int {
+			return (Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum);
 		}
 		
 		public function kill():void {
