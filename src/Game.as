@@ -48,9 +48,9 @@ package
 			if(hitDetected) {
 				hitDetected = false;
 				
-				roundNumber++;
+				roundNumber++;				
+					
 				if(roundNumber > 3) {
-					currentScore++
 				    ui.wonGame(currentScore);
 					roundNumber = 1;
 					
@@ -81,8 +81,11 @@ package
 		public function duckHit( e:PorkyEvent ):void 
 		{
 			if(hitAllowed) {
+				hitAllowed = false;
+				currentScore++					
 				hitDetected = true;
 				ui.wonRound();
+				ui.currentScore(currentScore)					
 			}
 		}
 	}
