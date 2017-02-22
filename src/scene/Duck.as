@@ -10,6 +10,7 @@ package scene
 		
 		public function Duck()
 		{
+			super();
 			var myImage : Bitmap = new DuckImg();
 			addChild( myImage );				
 		}

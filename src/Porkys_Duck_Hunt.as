@@ -5,17 +5,18 @@ package
 	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
 	import flash.events.Event;
+	import flash.utils.setTimeout;
 	
 	import scene.Background;
 	import scene.Duck;
+	import scene.Dog;
 	
-	[SWF(width="1280", height="720", backgroundColor="#ffffff", frameRate="30")]
-	
+	[SWF(width="1280", height="720", backgroundColor="#ffffff", frameRate="61")]
 	public class Porkys_Duck_Hunt extends Sprite
 	{
 		private var background:Background;
 		private var duck:Duck;	
-		private var dog:Background;
+		private var dog:Dog;
 		private var connection:PorkySocket;
 		
 		public function Porkys_Duck_Hunt()
@@ -26,24 +27,42 @@ package
 					
 			background = new Background();
 			addChild(background);
-			background.resize();
 			
-			stage.addEventListener(Event.RESIZE, function(e:Event) {
-				trace('resized again');
-				background.resize();
-			});
-			
-			duck = new Duck();	
-			addChild(duck);
-			
-			dog = new Background();
 			connection = new PorkySocket()
 			connection.addEventListener(PorkyEvent.DUCK_HIT, duckHit);
+			
+			game();
 		}
 		
-		private function duckHit( e:PorkyEvent ) 
+		private function showWonState():void {
+			dog = new Dog();
+			addChild(dog);
+		}
+		
+		private function launchDuck():void {
+			duck = new Duck();	
+			addChild(duck);
+		}
+		
+		private var hitAllowed:Boolean = false;
+		
+		public function game():void
 		{
-			trace('DUCK HIT');	
+			setTimeout(function():void {
+				hitAllowed = true
+				launchDuck()
+				
+				setTimeout(function():void {
+					hitAllowed = false;
+				}, 2000);
+			}, 2000);
+		}
+		
+		private function duckHit( e:PorkyEvent ):void 
+		{
+			if(hitAllowed) {
+				showWonState();
+			}
 		}
 	}
 }
