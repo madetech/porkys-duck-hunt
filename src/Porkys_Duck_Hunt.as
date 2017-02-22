@@ -4,7 +4,6 @@ package
 	import flash.display.StageAlign;
 	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
-	import flash.events.Event;
 	import flash.utils.setTimeout;
 	
 	import scene.Background;
@@ -39,11 +38,18 @@ package
 		private function showWonState():void {
 			dog = new Dog();
 			addChild(dog);
+			
+			removeChild(duck);
 		}
 		
 		private function launchDuck():void {
 			duck = new Duck();	
 			addChild(duck);
+		}
+		
+		private function showLoseState():void {
+			youLose = new YouLose();
+			addChild(youLose);			
 		}
 		
 		private var hitAllowed:Boolean = false;
@@ -57,10 +63,8 @@ package
 				
 				setTimeout(function():void {
 					hitAllowed = false;
-					if(hitDetected) {
-					   trace("You win!")
-					} else {
-					   
+					if(!hitDetected) {
+					   showLoseState();
 					}
 				}, 2000);
 			}, 2000);

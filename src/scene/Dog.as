@@ -1,5 +1,6 @@
 package scene
 {
+	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	
 	public class Dog extends Sprite
@@ -11,7 +12,12 @@ package scene
 		public function Dog()
 		{
 			super();
-			addChild(new DogImg());	
+			var myImage : Bitmap = new DogImg();
+			addChild( myImage );				
+			
+			myImage.x = (1280-myImage.width)/2;
+			myImage.y = (720-myImage.height);			
+			
 		}
 	}
 }

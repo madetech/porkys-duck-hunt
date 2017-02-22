@@ -13,6 +13,9 @@ package scene
 			super();
 			var myImage : Bitmap = new DuckImg();
 			addChild( myImage );				
+			
+			myImage.x = (1280-myImage.width)/2;
+			myImage.y = (720-myImage.height)/2;			
 		}
 	}
 }
