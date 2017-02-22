@@ -20,6 +20,8 @@ package
 		private var dog:Dog;
 		private var youLose:YouLose;
 		private var connection:PorkySocket;
+		private var dogs:Sprite;
+		private var ducks:Sprite;
 		
 		public function Main()
 		{			
@@ -28,6 +30,12 @@ package
 			stage.align = StageAlign.TOP_LEFT; 
 			stage.addEventListener(KeyboardEvent.KEY_UP, bypassDuckHit);
 					
+			dogs = new Sprite();
+			addChild(dogs);
+			
+			ducks = new Sprite();
+			addChild(ducks);			
+			
 			background = new Background();
 			addChild(background);
 			
@@ -45,14 +53,14 @@ package
 		
 		public function showWonState():void {
 			dog = new Dog();
-			addChild(dog);
+			dogs.addChild(dog);
 			
-			removeChild(duck);
+			duck.kill();
 		}
 		
 		public function launchDuck():void {
 			duck = new Duck();	
-			addChild(duck);
+			ducks.addChild(duck);
 		}
 		
 		public function showLoseState():void {
