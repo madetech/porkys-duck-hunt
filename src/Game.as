@@ -33,7 +33,7 @@ package
 					new Array(1000, function():void { ui.countDown(2); }),
 					new Array(1000, function():void { ui.countDown(1); }),
 					new Array(secondDelay, playRound),
-					new Array(2000, endRound)
+					new Array(10000, endRound)
 				)
 			);
 		}

@@ -28,7 +28,7 @@ package scene
 			duckImage = new DuckImg();
 			duckContainer.addChild( duckImage );				
 			
-			duckContainer.x = 1580;
+			duckContainer.x = 1280;
 			duckContainer.y = randomBetween(20, 570);
 						
 			addEventListener(Event.ADDED_TO_STAGE, fly);
@@ -52,7 +52,7 @@ package scene
 		}
 		
 		private function fly(e:Event):void {
-			flight = TweenLite.to(duckContainer, 3, {x:-500});
+			flight = TweenLite.to(duckContainer, 10, {x:-200});
 		}		
 	}
 }
