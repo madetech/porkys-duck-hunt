@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="Porkys_Duck_Hunt.as" projectUUID="73455dcc-9986-41f4-b2db-520fe21ef1c1" version="11">
+<actionScriptProperties analytics="false" mainApplicationPath="Main.as" projectUUID="73455dcc-9986-41f4-b2db-520fe21ef1c1" version="11">
   <compiler additionalCompilerArguments="-locale en_US" advancedTelemetry="false" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="true" useDebugRSLSwfs="true" useFlashSDK="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
@@ -34,6 +34,9 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
+    <application path="Main.as">
+      <airExcludes/>
+    </application>
     <application path="Porkys_Duck_Hunt.as">
       <airExcludes/>
     </application>

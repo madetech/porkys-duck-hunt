@@ -4,7 +4,6 @@ package
 	import flash.display.StageAlign;
 	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
-	import flash.utils.setTimeout;
 	
 	import scene.Background;
 	import scene.Dog;
@@ -12,7 +11,7 @@ package
 	import scene.YouLose;
 	
 	[SWF(width="1280", height="720", backgroundColor="#3cbcfd", frameRate="61")]
-	public class Porkys_Duck_Hunt extends Sprite implements IGamePresenter
+	public class Main extends Sprite implements IGamePresenter
 	{
 		private var game:Game;
 		private var background:Background;
@@ -21,7 +20,7 @@ package
 		private var youLose:YouLose;
 		private var connection:PorkySocket;
 		
-		public function Porkys_Duck_Hunt()
+		public function Main()
 		{			
 			stage.displayState = StageDisplayState.FULL_SCREEN; 
 			stage.scaleMode = StageScaleMode.EXACT_FIT; 
