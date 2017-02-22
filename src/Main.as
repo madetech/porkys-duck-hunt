@@ -52,6 +52,11 @@ package
 			youLose = new YouLose();
 			addChild(youLose);			
 		}
+		
+		public function newRound(roundNumber:int):void {
+			//todo
+			trace("it is round number " + roundNumber);
+		}
 	
 	}
 }
