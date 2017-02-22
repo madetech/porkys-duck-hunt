@@ -51,11 +51,16 @@ package
 			game.duckHit( new PorkyEvent(PorkyEvent.DUCK_HIT) );
 		}
 		
-		public function showWonState():void {
+		public function wonRound():void {
 			dog = new Dog();
 			dogs.addChild(dog);
 			
 			duck.kill();
+		}
+		
+		public function wonGame():void {
+			//All rounds are won!
+			trace("Congratulations, you won a prize!");
 		}
 		
 		public function launchDuck():void {

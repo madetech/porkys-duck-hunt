@@ -41,6 +41,7 @@ package
 					hitAllowed = false;
 					if(hitDetected) {
 						roundNumber++;
+						if(roundNumber > 3) return ui.wonGame();
 						if(roundNumber <= 3) return beginRound();
 					} 
 					
@@ -54,7 +55,7 @@ package
 		{
 			if(hitAllowed) {
 				hitDetected = true;
-				ui.showWonState();
+				ui.wonRound();
 			}
 		}
 	}
