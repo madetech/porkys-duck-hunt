@@ -8,8 +8,9 @@ package
 	import flash.utils.setTimeout;
 	
 	import scene.Background;
-	import scene.Duck;
 	import scene.Dog;
+	import scene.Duck;
+	import scene.YouLose;
 	
 	[SWF(width="1280", height="720", backgroundColor="#ffffff", frameRate="61")]
 	public class Porkys_Duck_Hunt extends Sprite
@@ -17,6 +18,7 @@ package
 		private var background:Background;
 		private var duck:Duck;	
 		private var dog:Dog;
+		private var youLose:YouLose;
 		private var connection:PorkySocket;
 		
 		public function Porkys_Duck_Hunt()
@@ -45,6 +47,7 @@ package
 		}
 		
 		private var hitAllowed:Boolean = false;
+		private var hitDetected:Boolean = false;
 		
 		public function game():void
 		{
@@ -54,6 +57,11 @@ package
 				
 				setTimeout(function():void {
 					hitAllowed = false;
+					if(hitDetected) {
+					   trace("You win!")
+					} else {
+					   
+					}
 				}, 2000);
 			}, 2000);
 		}
@@ -61,6 +69,7 @@ package
 		private function duckHit( e:PorkyEvent ):void 
 		{
 			if(hitAllowed) {
+				hitDetected = true;
 				showWonState();
 			}
 		}
