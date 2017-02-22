@@ -2,11 +2,11 @@ package
 {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
-	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
 	import flash.events.KeyboardEvent;
 	
 	import scene.Background;
+	import scene.Countdown;
 	import scene.Dog;
 	import scene.Duck;
 	import scene.YouLose;
@@ -22,6 +22,8 @@ package
 		private var connection:PorkySocket;
 		private var dogs:Sprite;
 		private var ducks:Sprite;
+		private var countdowns:Sprite;		
+		private var currentRound:int;
 		
 		public function Main()
 		{			
@@ -38,6 +40,9 @@ package
 			
 			background = new Background();
 			addChild(background);
+		
+			countdowns = new Sprite();
+			addChild(countdowns);
 			
 			game = new Game(this);
 			game.start();
@@ -75,13 +80,19 @@ package
 		}
 		
 		public function newRound(roundNumber:int):void {
-			for(var i:Number = 0; i < dogs.numChildren; i++) {
+			currentRound = roundNumber;
+			
+			for(var i:int = 0; i < dogs.numChildren; i++) {
 				Dog(dogs.getChildAt(i)).retreat();
 			}
 		}
 		
 		public function countDown(seconds:int):void {
-			trace("count down " + seconds);
+			for(var i:int = 0; i < countdowns.numChildren; i++) {
+				countdowns.removeChildAt(i)
+			}
+			
+			countdowns.addChild(new Countdown(seconds, currentRound));
 		}
 	}
 }
