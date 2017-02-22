@@ -1,5 +1,7 @@
 package scene
 {
+	import com.greensock.TweenLite;
+	
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.text.TextField;
@@ -57,19 +59,24 @@ package scene
 			roundContainer.addChild(roundBoard);
 			
 			roundContainer.x = (1280-roundBoard.width)/2;
-			roundContainer.y = (720-roundBoard.height)/2;					
+			roundContainer.y = 720;
 			
 			var format:TextFormat = new TextFormat();
 			format.font = "Verdana";
 			format.color = 0xFFFFFF;
-			format.size = 100;
+			format.size = 30;
 			format.align = "center";
-			
+		
 			label = new TextField();
 			label.defaultTextFormat = format;			
 			label.text = currentRound;
+			label.y = 40;
+			label.x = 20;
 			
 			roundContainer.addChild(label);			
+			
+			TweenLite.to(roundContainer, 0.5, {y:(720-roundBoard.height)/2});
+			TweenLite.to(roundContainer, 0.5, {y:720, delay:1.5});			
 		}
 	}
 }
