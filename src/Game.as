@@ -50,9 +50,7 @@ package
 			ui.showLoseState();	
 		}
 		
-		public function runSequentially(actions:Array):void {
-			//actions: Array( Array(delay, function), ... )
-			
+		public function runSequentially(actions:Array):void {			
 			var currentAction = actions.shift();
 			
 			if(!currentAction) return;
