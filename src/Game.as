@@ -8,6 +8,7 @@ package
 		private var hitAllowed:Boolean = false;
 		private var hitDetected:Boolean = false;
 		private var roundNumber:int = 1;
+		private var currentScore:int = 0;
 		
 		public function Game( ui:IGamePresenter )
 		{
@@ -42,12 +43,20 @@ package
 		private function endRound():void {
 			hitAllowed = false;
 			if(hitDetected) {
+				hitDetected = false;
+				
 				roundNumber++;
-				if(roundNumber > 3) return ui.wonGame();
+				if(roundNumber > 3) {
+					currentScore++
+				    ui.wonGame(currentScore);
+					roundNumber = 0;
+					
+					return beginRound();
+				}
 				if(roundNumber <= 3) return beginRound();
 			} 
 			
-			ui.showLoseState();	
+			ui.loseAllPoints(currentScore);	
 		}
 		
 		public function runSequentially(actions:Array):void {			

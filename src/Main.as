@@ -58,9 +58,9 @@ package
 			duck.kill();
 		}
 		
-		public function wonGame():void {
-			//All rounds are won!
-			trace("Congratulations, you won a prize!");
+		public function wonGame(currentScore:Number):void {
+			//All rounds are won! So you gain a point!
+			trace("Congratulations, your current score is: "+currentScore);
 		}
 		
 		public function launchDuck():void {
@@ -68,7 +68,8 @@ package
 			ducks.addChild(duck);
 		}
 		
-		public function showLoseState():void {
+		public function loseAllPoints(highScore:Number):void {
+			trace("You lose!");
 			youLose = new YouLose();
 			addChild(youLose);			
 		}
