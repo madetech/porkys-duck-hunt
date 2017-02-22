@@ -74,13 +74,13 @@ package
 		}
 		
 		public function newRound(roundNumber:int):void {
-			//todo
-			trace("it is round number " + roundNumber);
+			for(var i:Number = 0; i < dogs.numChildren; i++) {
+				Dog(dogs.getChildAt(i)).retreat();
+			}
 		}
 		
 		public function countDown(seconds:int):void {
 			trace("count down " + seconds);
 		}
-	
 	}
 }

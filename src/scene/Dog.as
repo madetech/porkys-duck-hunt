@@ -25,6 +25,10 @@ package scene
 			addEventListener(Event.ADDED_TO_STAGE, appear);			
 		}
 		
+		public function retreat():void {
+			TweenLite.to(myImage, 0.5, {y:720});			
+		}
+		
 		private function appear(e:Event):void 
 		{
 			TweenLite.to(myImage, 2, {y:(720-(myImage.height+100))});
