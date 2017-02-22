@@ -29,7 +29,7 @@ package scene
 			duckContainer.addChild( duckImage );				
 			
 			duckContainer.x = 1280;
-			duckContainer.y = randomBetween(20, 570);
+			duckContainer.y = randomBetween(20, 470);
 						
 			addEventListener(Event.ADDED_TO_STAGE, fly);
 		}
