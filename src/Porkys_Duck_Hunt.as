@@ -12,7 +12,7 @@ package
 	import scene.Duck;
 	import scene.YouLose;
 	
-	[SWF(width="1280", height="720", backgroundColor="#ffffff", frameRate="61")]
+	[SWF(width="1280", height="720", backgroundColor="#3cbcfd", frameRate="61")]
 	public class Porkys_Duck_Hunt extends Sprite
 	{
 		private var background:Background;
