@@ -21,6 +21,17 @@ package
 	
 		public function beginRound():void {
 			ui.newRound(roundNumber);
+		
+			
+			setTimeout(function():void {
+				ui.countDown(3);
+			}, 1000);
+			setTimeout(function():void {
+				ui.countDown(2);
+			}, 2000);
+			setTimeout(function():void {
+				ui.countDown(1);
+			}, 3000);
 			
 			setTimeout(function():void {
 				hitAllowed = true
@@ -35,7 +46,8 @@ package
 					
 					ui.showLoseState();	
 				}, 2000);
-			}, 2000);
+			}, 3000 + 2000);
+			
 		}
 		
 		public function duckHit( e:PorkyEvent ):void 

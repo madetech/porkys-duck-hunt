@@ -72,6 +72,10 @@ package
 			//todo
 			trace("it is round number " + roundNumber);
 		}
+		
+		public function countDown(seconds:int):void {
+			trace("count down " + seconds);
+		}
 	
 	}
 }
