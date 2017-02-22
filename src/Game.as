@@ -21,7 +21,6 @@ package
 	
 		public function beginRound():void {
 			ui.newRound(roundNumber);
-		
 			
 			setTimeout(function():void {
 				ui.countDown(3);
@@ -33,6 +32,8 @@ package
 				ui.countDown(1);
 			}, 3000);
 			
+			var secondDelay:Number = Math.random() * 10000;
+
 			setTimeout(function():void {
 				hitAllowed = true
 				ui.launchDuck()
@@ -47,7 +48,7 @@ package
 					
 					ui.showLoseState();	
 				}, 2000);
-			}, 3000 + 2000);
+			}, 3000 + secondDelay);
 			
 		}
 		
