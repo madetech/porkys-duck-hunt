@@ -12,8 +12,9 @@ package
 	import scene.YouLose;
 	
 	[SWF(width="1280", height="720", backgroundColor="#3cbcfd", frameRate="61")]
-	public class Porkys_Duck_Hunt extends Sprite
+	public class Porkys_Duck_Hunt extends Sprite implements IGamePresenter
 	{
+		private var game:Game;
 		private var background:Background;
 		private var duck:Duck;	
 		private var dog:Dog;
@@ -29,53 +30,29 @@ package
 			background = new Background();
 			addChild(background);
 			
-			connection = new PorkySocket()
-			connection.addEventListener(PorkyEvent.DUCK_HIT, duckHit);
+			game = new Game(this);
+			game.start();
 			
-			game();
+			connection = new PorkySocket()
+			connection.addEventListener(PorkyEvent.DUCK_HIT, game.duckHit);
 		}
 		
-		private function showWonState():void {
+		public function showWonState():void {
 			dog = new Dog();
 			addChild(dog);
 			
 			removeChild(duck);
 		}
 		
-		private function launchDuck():void {
+		public function launchDuck():void {
 			duck = new Duck();	
 			addChild(duck);
 		}
 		
-		private function showLoseState():void {
+		public function showLoseState():void {
 			youLose = new YouLose();
 			addChild(youLose);			
 		}
-		
-		private var hitAllowed:Boolean = false;
-		private var hitDetected:Boolean = false;
-		
-		public function game():void
-		{
-			setTimeout(function():void {
-				hitAllowed = true
-				launchDuck()
-				
-				setTimeout(function():void {
-					hitAllowed = false;
-					if(!hitDetected) {
-					   showLoseState();
-					}
-				}, 2000);
-			}, 2000);
-		}
-		
-		private function duckHit( e:PorkyEvent ):void 
-		{
-			if(hitAllowed) {
-				hitDetected = true;
-				showWonState();
-			}
-		}
+	
 	}
 }
