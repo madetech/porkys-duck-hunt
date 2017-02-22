@@ -4,6 +4,7 @@ package
 	import flash.display.StageAlign;
 	import flash.display.StageDisplayState;
 	import flash.display.StageScaleMode;
+	import flash.events.KeyboardEvent;
 	
 	import scene.Background;
 	import scene.Dog;
@@ -22,9 +23,10 @@ package
 		
 		public function Main()
 		{			
-			stage.displayState = StageDisplayState.FULL_SCREEN; 
+//			stage.displayState = StageDisplayState.FULL_SCREEN; 
 			stage.scaleMode = StageScaleMode.EXACT_FIT; 
 			stage.align = StageAlign.TOP_LEFT; 
+			stage.addEventListener(KeyboardEvent.KEY_UP, bypassDuckHit);
 					
 			background = new Background();
 			addChild(background);
@@ -34,6 +36,11 @@ package
 			
 			connection = new PorkySocket()
 			connection.addEventListener(PorkyEvent.DUCK_HIT, game.duckHit);
+		}
+		
+		private function bypassDuckHit(e:KeyboardEvent) : void
+		{
+			game.duckHit( new PorkyEvent(PorkyEvent.DUCK_HIT) );
 		}
 		
 		public function showWonState():void {
