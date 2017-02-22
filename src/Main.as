@@ -16,8 +16,6 @@ package
 	{
 		private var game:Game;
 		private var background:Background;
-		private var duck:Duck;	
-		private var dog:Dog;
 		private var youLose:YouLose;
 		private var connection:PorkySocket;
 		private var dogs:Sprite;
@@ -57,10 +55,11 @@ package
 		}
 		
 		public function wonRound():void {
-			dog = new Dog();
-			dogs.addChild(dog);
-			
-			duck.kill();
+			dogs.addChild(new Dog());
+
+			for(var i:int = 0; i < ducks.numChildren; i++) {
+				Duck(ducks.getChildAt(i)).kill();
+			}
 		}
 		
 		public function wonGame(currentScore:Number):void {
@@ -69,14 +68,15 @@ package
 		}
 		
 		public function launchDuck():void {
-			duck = new Duck();	
-			ducks.addChild(duck);
+			ducks.addChild(new Duck());
 		}
 		
 		public function loseAllPoints(highScore:Number):void {
 			trace("You lose!");
 			youLose = new YouLose();
-			addChild(youLose);			
+			addChild(youLose);		
+		
+			dogs.addChild(new Dog(false));			
 		}
 		
 		public function newRound(roundNumber:int):void {

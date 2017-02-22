@@ -10,19 +10,32 @@ package scene
 	{
 		
 		[Embed(source = "../../assets/dog.png", mimeType = "image/png")]
-		private var DogImg:Class;
+		private var HappyDogImg:Class;
+
+		[Embed(source = "../../assets/dog_whoops.png", mimeType = "image/png")]
+		private var WhoopsDogImg:Class;		
+		
 		private var myImage : Bitmap;
 		
-		public function Dog()
+		public function Dog(happy:Boolean = true)
 		{
 			super();
-			myImage = new DogImg();
+			myImage = dogImg(happy);
 			addChild( myImage );				
 			
 			myImage.x = (1280-myImage.width)/2;
 			myImage.y = 720;
 			
 			addEventListener(Event.ADDED_TO_STAGE, appear);			
+		}
+		
+		private function dogImg(happy:Boolean) : Bitmap 
+		{
+			if(happy) {
+				return new HappyDogImg() as Bitmap;
+			} else {
+				return new WhoopsDogImg() as Bitmap;	
+			}			
 		}
 		
 		public function retreat():void {
