@@ -7,8 +7,10 @@ package
 	
 	import scene.Background;
 	import scene.Countdown;
+	import scene.CurrentScore;
 	import scene.Dog;
 	import scene.Duck;
+	import scene.WonGame;
 	import scene.YouLose;
 	
 	[SWF(width="1280", height="720", backgroundColor="#3cbcfd", frameRate="61")]
@@ -20,6 +22,7 @@ package
 		private var connection:PorkySocket;
 		private var dogs:Sprite;
 		private var ducks:Sprite;
+		private var scores:Sprite;
 		private var countdowns:Sprite;		
 		private var currentRound:int;
 		
@@ -41,6 +44,9 @@ package
 		
 			countdowns = new Sprite();
 			addChild(countdowns);
+			
+			scores = new Sprite();
+			addChild(scores);
 			
 			game = new Game(this);
 			game.start();
@@ -65,6 +71,13 @@ package
 		public function wonGame(currentScore:Number):void {
 			//All rounds are won! So you gain a point!
 			trace("Congratulations, your current score is: "+currentScore);
+			removeAllFromContainer(scores);
+			scores.addChild(new WonGame(currentScore));
+		}
+		
+		public function currentScore(score:Number):void {
+			removeAllFromContainer(scores);
+			scores.addChild(new CurrentScore(score));	
 		}
 		
 		public function launchDuck():void {
@@ -88,11 +101,15 @@ package
 		}
 		
 		public function countDown(seconds:int):void {
-			for(var i:int = 0; i < countdowns.numChildren; i++) {
-				countdowns.removeChildAt(i)
-			}
+			removeAllFromContainer(countdowns);
 			
 			countdowns.addChild(new Countdown(seconds, currentRound));
+		}
+		
+		private function removeAllFromContainer(sprite:Sprite):void {
+			for(var i:int = 0; i < sprite.numChildren; i++) {
+				sprite.removeChildAt(i)
+			}
 		}
 	}
 }

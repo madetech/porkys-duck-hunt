@@ -8,5 +8,6 @@ package
 		function loseAllPoints(highScore:Number):void
 		function newRound(roundNumber:int):void
 		function countDown(second:int):void
+		function currentScore(score:Number):void
 	}
 }

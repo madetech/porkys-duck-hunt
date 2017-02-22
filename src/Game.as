@@ -25,7 +25,10 @@ package
 			
 			runSequentially(
 				new Array( 
-					new Array(3000, function():void { ui.newRound(roundNumber) } ),
+					new Array(5000, function():void { 
+						ui.newRound(roundNumber) 
+						ui.currentScore(currentScore)
+					} ),
 					new Array(1000, function():void { ui.countDown(3); }),
 					new Array(1000, function():void { ui.countDown(2); }),
 					new Array(1000, function():void { ui.countDown(1); }),
@@ -49,7 +52,7 @@ package
 				if(roundNumber > 3) {
 					currentScore++
 				    ui.wonGame(currentScore);
-					roundNumber = 0;
+					roundNumber = 1;
 					
 					return beginRound();
 				}
@@ -57,6 +60,8 @@ package
 			} 
 			
 			ui.loseAllPoints(currentScore);	
+			currentScore = 0;
+			start();
 		}
 		
 		public function runSequentially(actions:Array):void {			
