@@ -87,12 +87,13 @@ package
 		public function loseAllPoints(highScore:Number):void {
 			trace("You lose!");
 			youLose = new YouLose();
-			addChild(youLose);		
+			scores.addChild(youLose);		
 		
 			dogs.addChild(new Dog(false));			
 		}
 		
 		public function newRound(roundNumber:int):void {
+			removeAllFromContainer(scores);
 			currentRound = roundNumber;
 			
 			for(var i:int = 0; i < dogs.numChildren; i++) {
